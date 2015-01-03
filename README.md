@@ -1,0 +1,4 @@
+AKGenerics
+==========
+
+Generically useful methods
