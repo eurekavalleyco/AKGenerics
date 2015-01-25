@@ -17,6 +17,8 @@
 
 #pragma mark - // DEFINITIONS (Public) //
 
+#define stringFromVariable(variable) (@""#variable)
+
 @interface AKGenerics : NSObject
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button;
 + (void)setText:(NSString *)text forButton:(UIButton *)button;
