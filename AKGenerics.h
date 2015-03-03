@@ -24,4 +24,5 @@
 + (void)setText:(NSString *)text forButton:(UIButton *)button;
 + (UIView *)getFirstResponderInView:(UIView *)view;
 + (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range;
++ (UIImage *)image:(UIImage *)image setAlpha:(CGFloat)alpha;
 @end
