@@ -18,6 +18,9 @@
 #pragma mark - // DEFINITIONS (Public) //
 
 #define stringFromVariable(variable) (@""#variable)
+#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObject"
+#define NOTIFICATION_OLD_KEY @"kNotificationOldKeyObject"
+#define NOTIFICATION_NEW_KEY @"kNotificationNewKeyObject"
 
 @interface AKGenerics : NSObject
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button;
