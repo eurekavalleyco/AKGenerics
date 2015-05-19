@@ -95,6 +95,18 @@
     return newImage;
 }
 
++ (NSString *)randomStringWithCharacters:(NSString *)charactersString length:(NSUInteger)length
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategory:@"Data Manager" message:nil];
+    
+    NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
+    for (int i = 0; i < length; i++)
+    {
+        [randomString appendFormat: @"%C", [charactersString characterAtIndex: arc4random() % [charactersString length]]];
+    }
+    return randomString;
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
