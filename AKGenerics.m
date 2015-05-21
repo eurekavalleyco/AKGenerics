@@ -28,7 +28,7 @@
 
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategory:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategories:nil message:nil];
     
     if (button)
     {
@@ -40,7 +40,7 @@
 
 + (void)setText:(NSString *)text forButton:(UIButton *)button
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategory:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategories:nil message:nil];
     
     if (button)
     {
@@ -52,7 +52,7 @@
 
 + (UIView *)getFirstResponderInView:(UIView *)view
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategory:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:nil message:nil];
     
     UIView *firstResponder;
     NSMutableArray *subviews = [[NSMutableArray alloc] initWithObjects:view, nil];
@@ -67,7 +67,7 @@
 
 + (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategory:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
     
     UITextPosition *start = [textField positionFromPosition:[textField beginningOfDocument] offset:range.location];
     UITextPosition *end = [textField positionFromPosition:start offset:range.length];
@@ -76,7 +76,7 @@
 
 + (UIImage *)image:(UIImage *)image setAlpha:(CGFloat)alpha
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategory:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
     
     UIImage *newImage = nil;
     if (image)
@@ -97,7 +97,7 @@
 
 + (NSString *)randomStringWithCharacters:(NSString *)charactersString length:(NSUInteger)length
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategory:@"Data Manager" message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
     
     NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++)
