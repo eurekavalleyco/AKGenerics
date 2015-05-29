@@ -107,6 +107,22 @@
     return randomString;
 }
 
++ (BOOL)view:(UIView *)view isEventualSubviewOfView:(UIView *)parentView
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    NSMutableOrderedSet *setOfSubviews = [[NSMutableOrderedSet alloc] initWithArray:parentView.subviews];
+    UIView *subview;
+    while (setOfSubviews.count > 0)
+    {
+        subview = [setOfSubviews firstObject];
+        if ([subview isEqual:view]) return YES;
+        else if (subview.subviews.count > 0) [setOfSubviews addObjectsFromArray:subview.subviews];
+        [setOfSubviews removeObject:subview];
+    }
+    return NO;
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

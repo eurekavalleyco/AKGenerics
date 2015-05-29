@@ -29,4 +29,5 @@
 + (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range;
 + (UIImage *)image:(UIImage *)image setAlpha:(CGFloat)alpha;
 + (NSString *)randomStringWithCharacters:(NSString *)charactersString length:(NSUInteger)length;
++ (BOOL)view:(UIView *)view isEventualSubviewOfView:(UIView *)parentView;
 @end
