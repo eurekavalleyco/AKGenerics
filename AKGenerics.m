@@ -140,6 +140,20 @@
     return YES;
 }
 
++ (UIViewController *)rootViewController
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    return [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+}
+
++ (UIWindow *)fullscreenWindow
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    return [[[UIApplication sharedApplication] delegate] window];
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

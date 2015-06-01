@@ -31,4 +31,6 @@
 + (NSString *)randomStringWithCharacters:(NSString *)charactersString length:(NSUInteger)length;
 + (BOOL)view:(UIView *)view isEventualSubviewOfView:(UIView *)parentView;
 + (BOOL)isEmail:(NSString *)email;
++ (UIViewController *)rootViewController;
++ (UIWindow *)fullscreenWindow;
 @end
