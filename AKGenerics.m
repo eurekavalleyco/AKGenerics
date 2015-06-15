@@ -131,7 +131,7 @@
     
     NSError *error = NULL;
     NSRegularExpression *regexEmail = [NSRegularExpression regularExpressionWithPattern:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" options:NSRegularExpressionCaseInsensitive error:&error];
-    if ([regexEmail firstMatchInString:email options:0 range:NSMakeRange(0, email.length)])
+    if (![regexEmail firstMatchInString:email options:0 range:NSMakeRange(0, email.length)])
     {
         [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeInfo methodType:AKMethodTypeValidator customCategories:@[AKD_ACCOUNTS] message:[NSString stringWithFormat:@"%@ is not a valid email address", stringFromVariable(email)]];
         return NO;
