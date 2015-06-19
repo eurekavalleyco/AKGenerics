@@ -33,4 +33,5 @@
 + (BOOL)isEmail:(NSString *)email;
 + (UIViewController *)rootViewController;
 + (UIWindow *)fullscreenWindow;
++ (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
 @end

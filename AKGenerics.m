@@ -12,6 +12,7 @@
 
 #import "AKGenerics.h"
 #import "AKDebugger.h"
+#import "AKSystemInfo.h"
 
 #pragma mark - // DEFINITIONS (Private) //
 
@@ -152,6 +153,20 @@
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
     
     return [[[UIApplication sharedApplication] delegate] window];
+}
+
++ (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    UITableViewCell *cell;
+    if (([AKSystemInfo iOSVersion] < 7.0) || (!fromStoryboard))
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (!cell) cell = [[NSClassFromString(className) alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
+    }
+    else cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    return cell;
 }
 
 #pragma mark - // DELEGATED METHODS //
