@@ -169,6 +169,16 @@
     return cell;
 }
 
++ (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    for (UITextField *textField in alertController.textFields)
+    {
+        [textField setText:nil];
+    }
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

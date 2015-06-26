@@ -34,4 +34,5 @@
 + (UIViewController *)rootViewController;
 + (UIWindow *)fullscreenWindow;
 + (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
++ (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController;
 @end
