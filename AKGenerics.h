@@ -35,4 +35,7 @@
 + (UIWindow *)fullscreenWindow;
 + (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
 + (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController;
++ (void)incrementBadge;
++ (void)decrementBadge;
++ (void)setBadgeToCount:(NSUInteger)count;
 @end
