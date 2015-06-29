@@ -1,6 +1,6 @@
 //
 //  AKGenerics.h
-//  AKSuperViewController
+//  AKGenerics
 //
 //  Created by Ken M. Haggerty on 12/16/13.
 //  Copyright (c) 2013 Eureka Valley Co. All rights reserved.
@@ -38,4 +38,6 @@
 + (void)incrementBadge;
 + (void)decrementBadge;
 + (void)setBadgeToCount:(NSUInteger)count;
++ (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText;
+
 @end

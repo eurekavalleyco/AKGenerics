@@ -1,6 +1,6 @@
 //
 //  AKGenerics.m
-//  AKSuperViewController
+//  AKGenerics
 //
 //  Created by Ken M. Haggerty on 12/16/13.
 //  Copyright (c) 2013 Eureka Valley Co. All rights reserved.
@@ -198,6 +198,15 @@
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter customCategories:nil message:nil];
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count];
+}
+
++ (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:nil message:nil];
+    
+    if (boolValue) return yesText;
+    
+    return noText;
 }
 
 #pragma mark - // DELEGATED METHODS //
