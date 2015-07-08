@@ -38,5 +38,5 @@
 + (void)decrementBadge;
 + (void)setBadgeToCount:(NSUInteger)count;
 + (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText;
-
++ (NSString *)pluralizationForCount:(NSInteger)count singular:(NSString *)singular plural:(NSString *)plural;
 @end
