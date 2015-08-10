@@ -22,6 +22,7 @@
 #define NOTIFICATION_OLD_KEY @"kNotificationOldKeyObject"
 
 @interface AKGenerics : NSObject
++ (BOOL)object:(id)object1 isEqualToObject:(id)object2;
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button;
 + (void)setText:(NSString *)text forButton:(UIButton *)button;
 + (UIView *)getFirstResponderInView:(UIView *)view;

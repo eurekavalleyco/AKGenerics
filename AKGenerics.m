@@ -27,6 +27,43 @@
 
 #pragma mark - // PUBLIC METHODS //
 
++ (BOOL)object:(id)object1 isEqualToObject:(id)object2
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator customCategories:nil message:nil];
+    
+    if (!object1 && !object2) return YES;
+    
+    if (!object1 || !object2) return NO;
+    
+    if ([object1 isKindOfClass:[NSArray class]] && [object2 isKindOfClass:[NSArray class]]) return [object1 isEqualToArray:object2];
+    
+    if ([object1 isKindOfClass:[NSAttributedString class]] && [object2 isKindOfClass:[NSAttributedString class]]) return [object1 isEqualToAttributedString:object2];
+    
+    if ([object1 isKindOfClass:[NSData class]] && [object2 isKindOfClass:[NSData class]]) return [object1 isEqualToData:object2];
+    
+    if ([object1 isKindOfClass:[NSDate class]] && [object2 isKindOfClass:[NSDate class]]) return [object1 isEqualToDate:object2];
+    
+    if ([object1 isKindOfClass:[NSDictionary class]] && [object2 isKindOfClass:[NSDictionary class]]) return [object1 isEqualToDictionary:object2];
+    
+    if ([object1 isKindOfClass:[NSHashTable class]] && [object2 isKindOfClass:[NSHashTable class]]) return [object1 isEqualToHashTable:object2];
+    
+    if ([object1 isKindOfClass:[NSIndexSet class]] && [object2 isKindOfClass:[NSIndexSet class]]) return [object1 isEqualToIndexSet:object2];
+    
+    if ([object1 isKindOfClass:[NSNumber class]] && [object2 isKindOfClass:[NSNumber class]]) return [object1 isEqualToNumber:object2];
+    
+    if ([object1 isKindOfClass:[NSOrderedSet class]] && [object2 isKindOfClass:[NSOrderedSet class]]) return [object1 isEqualToOrderedSet:object2];
+    
+    if ([object1 isKindOfClass:[NSSet class]] && [object2 isKindOfClass:[NSSet class]]) return [object1 isEqualToSet:object2];
+    
+    if ([object1 isKindOfClass:[NSString class]] && [object2 isKindOfClass:[NSString class]]) return [object1 isEqualToString:object2];
+    
+    if ([object1 isKindOfClass:[NSTimeZone class]] && [object2 isKindOfClass:[NSTimeZone class]]) return [object1 isEqualToTimeZone:object2];
+    
+    if ([object1 isKindOfClass:[NSValue class]] && [object2 isKindOfClass:[NSValue class]]) return [object1 isEqualToValue:object2];
+    
+    return [object1 isEqual:object2];
+}
+
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategories:nil message:nil];
