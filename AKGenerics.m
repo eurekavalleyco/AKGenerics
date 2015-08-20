@@ -255,6 +255,21 @@
     return plural;
 }
 
++ (void)postNotificationName:(NSString *)notificationName object:(id)object userInfo:(NSDictionary *)userInfo
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_NOTIFICATION_CENTER] message:nil];
+    
+    if ([NSThread isMainThread])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:object userInfo:userInfo];
+        return;
+    }
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:object userInfo:userInfo];
+    });
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
