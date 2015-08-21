@@ -270,6 +270,20 @@
     });
 }
 
++ (NSData *)convertDictionaryToData:(NSDictionary *)dictionary
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
+    
+    return [NSKeyedArchiver archivedDataWithRootObject:dictionary];
+}
+
++ (NSDictionary *)convertDataToDictionary:(NSData *)data
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

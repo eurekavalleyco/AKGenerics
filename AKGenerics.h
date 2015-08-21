@@ -41,4 +41,6 @@
 + (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText;
 + (NSString *)pluralizationForCount:(NSInteger)count singular:(NSString *)singular plural:(NSString *)plural;
 + (void)postNotificationName:(NSString *)notificationName object:(id)object userInfo:(NSDictionary *)userInfo;
++ (NSData *)convertDictionaryToData:(NSDictionary *)dictionary;
++ (NSDictionary *)convertDataToDictionary:(NSData *)data;
 @end
