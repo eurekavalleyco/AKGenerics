@@ -43,4 +43,6 @@
 + (void)postNotificationName:(NSString *)notificationName object:(id)object userInfo:(NSDictionary *)userInfo;
 + (NSData *)convertDictionaryToData:(NSDictionary *)dictionary;
 + (NSDictionary *)convertDataToDictionary:(NSData *)data;
++ (void)addBorderToView:(UIView *)view withColor:(CGColorRef)color width:(CGFloat)width;
++ (void)addShadowToView:(UIView *)view withShadowRadius:(CGFloat)shadowRadius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset shadowColor:(CGColorRef)color opacity:(float)opacity;
 @end

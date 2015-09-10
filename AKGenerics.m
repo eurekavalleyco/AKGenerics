@@ -13,6 +13,7 @@
 #import "AKGenerics.h"
 #import "AKDebugger.h"
 #import "AKSystemInfo.h"
+#import <QuartzCore/QuartzCore.h>
 
 #pragma mark - // DEFINITIONS (Private) //
 
@@ -282,6 +283,27 @@
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
     
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
++ (void)addBorderToView:(UIView *)view withColor:(CGColorRef)color width:(CGFloat)width
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    [view.layer setBorderColor:color];
+    [view.layer setBorderWidth:width];
+}
+
++ (void)addShadowToView:(UIView *)view withShadowRadius:(CGFloat)shadowRadius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset shadowColor:(CGColorRef)color opacity:(float)opacity
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    [view.layer setShadowPath:[UIBezierPath bezierPathWithRect:view.bounds].CGPath];
+    [view.layer setShadowRadius:shadowRadius];
+    [view.layer setCornerRadius:cornerRadius];
+    [view.layer setShadowOffset:shadowOffset];
+    [view.layer setMasksToBounds:NO];
+    [view.layer setShadowColor:color];
+    [view.layer setShadowOpacity:opacity];
 }
 
 #pragma mark - // DELEGATED METHODS //
