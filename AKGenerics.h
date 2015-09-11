@@ -34,6 +34,7 @@
 + (UIViewController *)rootViewController;
 + (UIWindow *)fullscreenWindow;
 + (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
++ (UICollectionViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)indexPath;
 + (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController;
 + (void)incrementBadge;
 + (void)decrementBadge;
@@ -45,4 +46,5 @@
 + (NSDictionary *)convertDataToDictionary:(NSData *)data;
 + (void)addBorderToView:(UIView *)view withColor:(CGColorRef)color width:(CGFloat)width;
 + (void)addShadowToView:(UIView *)view withShadowRadius:(CGFloat)shadowRadius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset shadowColor:(CGColorRef)color opacity:(float)opacity;
++ (UIImage *)createThumbnailForImage:(UIImage *)image ofSize:(CGSize)size opaque:(BOOL)opaque;
 @end

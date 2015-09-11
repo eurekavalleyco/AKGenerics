@@ -207,6 +207,13 @@
     return cell;
 }
 
++ (UICollectionViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)indexPath
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];;
+}
+
 + (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
@@ -304,6 +311,23 @@
     [view.layer setMasksToBounds:NO];
     [view.layer setShadowColor:color];
     [view.layer setShadowOpacity:opacity];
+}
+
++ (UIImage *)createThumbnailForImage:(UIImage *)image ofSize:(CGSize)size opaque:(BOOL)opaque
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator customCategories:nil message:nil];
+    
+    if (!image)
+    {
+        [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeCreator customCategories:nil message:[NSString stringWithFormat:@"%@ is nil", stringFromVariable(image)]];
+        return nil;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
+    [image drawInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
+    UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return thumbnail;
 }
 
 #pragma mark - // DELEGATED METHODS //
