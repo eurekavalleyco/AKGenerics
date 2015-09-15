@@ -323,8 +323,21 @@
         return nil;
     }
     
+    CGRect cropRect;
+    CGFloat newDimension;
+    if (image.size.width/image.size.height < size.width/size.height)
+    {
+        newDimension = image.size.width*(size.height/size.width);
+        cropRect = CGRectMake(0.0, (image.size.height-newDimension)/2.0, image.size.width, newDimension);
+    }
+    else
+    {
+        newDimension = image.size.height*(size.width/size.height);
+        cropRect = CGRectMake((image.size.width-newDimension)/2.0, 0.0, newDimension, image.size.height);
+    }
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
-    [image drawInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
+    [[UIImage imageWithCGImage:imageRef] drawInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
     UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return thumbnail;
