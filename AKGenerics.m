@@ -343,6 +343,43 @@
     return thumbnail;
 }
 
++ (float)angleForOrientation:(UIInterfaceOrientation)orientation
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    switch (orientation)
+    {
+        case UIInterfaceOrientationLandscapeLeft:
+            return 3.0f*M_PI_2;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return M_PI;
+        case UIInterfaceOrientationLandscapeRight:
+            return M_PI_2;
+        default:
+            return 0.0f;
+    }
+}
+
++ (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    switch (interfaceOrientation)
+    {
+        case UIInterfaceOrientationPortrait:
+            return AVCaptureVideoOrientationPortrait;
+        case UIInterfaceOrientationLandscapeRight:
+            return AVCaptureVideoOrientationLandscapeRight;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return AVCaptureVideoOrientationPortraitUpsideDown;
+        case UIInterfaceOrientationLandscapeLeft:
+            return AVCaptureVideoOrientationLandscapeLeft;
+        case UIInterfaceOrientationUnknown:
+            [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeWarning methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:[NSString stringWithFormat:@"Cannot convert %@ to %@", stringFromVariable(interfaceOrientation), @"AVCaptureVideoOrientation"]];
+            return 0.0;
+    }
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

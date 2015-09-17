@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #pragma mark - // PROTOCOLS //
 
@@ -47,4 +48,6 @@
 + (void)addBorderToView:(UIView *)view withColor:(CGColorRef)color width:(CGFloat)width;
 + (void)addShadowToView:(UIView *)view withShadowRadius:(CGFloat)shadowRadius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset shadowColor:(CGColorRef)color opacity:(float)opacity;
 + (UIImage *)createThumbnailForImage:(UIImage *)image ofSize:(CGSize)size opaque:(BOOL)opaque;
++ (float)angleForOrientation:(UIInterfaceOrientation)orientation;
++ (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation;
 @end
