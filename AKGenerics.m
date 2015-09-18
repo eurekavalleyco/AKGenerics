@@ -426,6 +426,21 @@
     [CATransaction commit];
 }
 
++ (void)flipView:(UIView *)view toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+    rotationAndPerspectiveTransform.m34 = 1.0/-500;
+    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, radians, 0.0f, 1.0f, 0.0f);
+    [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
+        [view.layer setTransform:rotationAndPerspectiveTransform];
+        animations();
+    } completion:^(BOOL finished) {
+        if (completion) completion(finished);
+    }];
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
