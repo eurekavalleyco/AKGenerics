@@ -343,20 +343,41 @@
     return thumbnail;
 }
 
-+ (float)angleForOrientation:(UIInterfaceOrientation)orientation
++ (NSNumber *)angleForDeviceOrientation:(UIDeviceOrientation)orientation
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
+    
+    switch (orientation)
+    {
+        case UIDeviceOrientationLandscapeRight:
+            return [NSNumber numberWithFloat:3.0f*M_PI_2];
+        case UIDeviceOrientationPortraitUpsideDown:
+            return [NSNumber numberWithFloat:M_PI];
+        case UIDeviceOrientationLandscapeLeft:
+            return [NSNumber numberWithFloat:M_PI_2];
+        case UIDeviceOrientationPortrait:
+            return [NSNumber numberWithFloat:0.0f];
+        default:
+            return nil;
+    }
+}
+
++ (NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
     
     switch (orientation)
     {
         case UIInterfaceOrientationLandscapeLeft:
-            return 3.0f*M_PI_2;
+            return [NSNumber numberWithFloat:3.0f*M_PI_2];
         case UIInterfaceOrientationPortraitUpsideDown:
-            return M_PI;
+            return [NSNumber numberWithFloat:M_PI];
         case UIInterfaceOrientationLandscapeRight:
-            return M_PI_2;
+            return [NSNumber numberWithFloat:M_PI_2];
+        case UIInterfaceOrientationPortrait:
+            return [NSNumber numberWithFloat:0.0f];
         default:
-            return 0.0f;
+            return nil;
     }
 }
 
@@ -378,6 +399,31 @@
             [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeWarning methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:[NSString stringWithFormat:@"Cannot convert %@ to %@", stringFromVariable(interfaceOrientation), @"AVCaptureVideoOrientation"]];
             return 0.0;
     }
+}
+
++ (void)rotateViewAnimated:(UIView *)view fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    [AKGenerics rotateViewsAnimated:@[view] fromAngle:fromAngle byAngle:angle withDuration:duration completion:completion];
+}
+
++ (void)rotateViewsAnimated:(NSArray *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    for (UIView *view in views) [view setTransform:CGAffineTransformRotate(CGAffineTransformIdentity, fromAngle)];
+    [CATransaction begin];
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    [rotationAnimation setByValue:[NSNumber numberWithFloat:angle]];
+    [rotationAnimation setDuration:duration];
+    [rotationAnimation setRemovedOnCompletion:NO];
+    [rotationAnimation setFillMode:kCAFillModeForwards];
+    [CATransaction setCompletionBlock:^{
+        completion();
+    }];
+    for (UIView *view in views) [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [CATransaction commit];
 }
 
 #pragma mark - // DELEGATED METHODS //
