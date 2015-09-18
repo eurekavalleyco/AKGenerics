@@ -426,13 +426,15 @@
     [CATransaction commit];
 }
 
-+ (void)flipView:(UIView *)view toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion
++ (void)flipView:(UIView *)view horizontally:(BOOL)horizontally toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
     
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = 1.0/-500;
-    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, radians, 0.0f, 1.0f, 0.0f);
+    CGPoint rotationAxis = CGPointMake(1.0f, 0.0f);
+    if (horizontally) rotationAxis = CGPointMake(0.0f, 1.0f);
+    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, radians, rotationAxis.x, rotationAxis.y, 0.0f);
     [UIView animateWithDuration:duration delay:0.0 options:options animations:^{
         [view.layer setTransform:rotationAndPerspectiveTransform];
         animations();
