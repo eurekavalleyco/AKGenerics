@@ -482,9 +482,8 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
     
-    CGImageRef imageRef = [image CGImage];
-    imageRef = CGImageRotated(imageRef, M_PI_2);
-    imageRef = CGImageCreateWithImageInRect(imageRef, frame);
+    CGImageRef imageRef = CGImageRotated([image CGImage], M_PI_2);
+    imageRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height-frame.origin.y));
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return croppedImage;
@@ -535,7 +534,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians)
     CGContextDrawImage(rotatedContext, drawingRect, originalCGImage);
     CGImageRef rotatedCGImage = CGBitmapContextCreateImage(rotatedContext);
     UIGraphicsEndImageContext();
-    CFAutorelease((CFTypeRef)rotatedCGImage);
+//    CFAutorelease((CFTypeRef)rotatedCGImage);
     return rotatedCGImage;
 }
 
