@@ -18,6 +18,7 @@
 #pragma mark - // DEFINITIONS (Private) //
 
 @interface AKGenerics ()
+CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 @end
 
 @implementation AKGenerics
@@ -74,6 +75,18 @@
         [button setImage:image forState:UIControlStateNormal];
         [button setImage:image forState:UIControlStateSelected];
         [button setImage:image forState:UIControlStateHighlighted];
+    }
+}
+
++ (void)setBackgroundImage:(UIImage *)image forButton:(UIButton *)button
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup customCategories:nil message:nil];
+    
+    if (button)
+    {
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        [button setBackgroundImage:image forState:UIControlStateSelected];
+        [button setBackgroundImage:image forState:UIControlStateHighlighted];
     }
 }
 
@@ -339,6 +352,7 @@
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
     [[UIImage imageWithCGImage:imageRef] drawInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
     UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    CGImageRelease(imageRef);
     UIGraphicsEndImageContext();
     return thumbnail;
 }
@@ -378,6 +392,27 @@
             return [NSNumber numberWithFloat:0.0f];
         default:
             return nil;
+    }
+}
+
++ (CGFloat)angleForImageOrientation:(UIImageOrientation)orientation
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:nil message:nil];
+    
+    switch (orientation)
+    {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            return 3.0f*M_PI_2;
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            return M_PI;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            return M_PI_2;
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            return 0.f;
     }
 }
 
@@ -443,10 +478,65 @@
     }];
 }
 
++ (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)frame
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:nil message:nil];
+    
+    CGImageRef imageRef = [image CGImage];
+    imageRef = CGImageRotated(imageRef, M_PI_2);
+    imageRef = CGImageCreateWithImageInRect(imageRef, frame);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return croppedImage;
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
 
 #pragma mark - // PRIVATE METHODS //
+
+CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians)
+{
+    CGSize imageSize = CGSizeMake(CGImageGetWidth(originalCGImage), CGImageGetHeight(originalCGImage));
+    CGSize rotatedSize = imageSize;
+    if (radians == M_PI_2 || radians == -M_PI_2)
+    {
+        rotatedSize = CGSizeMake(imageSize.height, imageSize.width);
+    }
+    
+    double rotatedCenterX = rotatedSize.width / 2.f;
+    double rotatedCenterY = rotatedSize.height / 2.f;
+    
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, 1.f);
+    CGContextRef rotatedContext = UIGraphicsGetCurrentContext();
+    if (radians == 0.f || radians == M_PI)
+    {
+        CGContextTranslateCTM(rotatedContext, rotatedCenterX, rotatedCenterY);
+        if (radians == 0.0f)
+        {
+            CGContextScaleCTM(rotatedContext, 1.f, -1.f);
+        }
+        else
+        {
+            CGContextScaleCTM(rotatedContext, -1.f, 1.f);
+        }
+        CGContextTranslateCTM(rotatedContext, -rotatedCenterX, -rotatedCenterY);
+    }
+    else if (radians == M_PI_2 || radians == -M_PI_2)
+    {
+        CGContextTranslateCTM(rotatedContext, rotatedCenterX, rotatedCenterY);
+        CGContextRotateCTM(rotatedContext, radians);
+        CGContextScaleCTM(rotatedContext, 1.f, -1.f);
+        CGContextTranslateCTM(rotatedContext, -rotatedCenterY, -rotatedCenterX);
+    }
+    
+    CGRect drawingRect = CGRectMake(0.f, 0.f, imageSize.width, imageSize.height);
+    CGContextDrawImage(rotatedContext, drawingRect, originalCGImage);
+    CGImageRef rotatedCGImage = CGBitmapContextCreateImage(rotatedContext);
+    UIGraphicsEndImageContext();
+    CFAutorelease((CFTypeRef)rotatedCGImage);
+    return rotatedCGImage;
+}
 
 @end

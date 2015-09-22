@@ -25,6 +25,7 @@
 @interface AKGenerics : NSObject
 + (BOOL)object:(id)object1 isEqualToObject:(id)object2;
 + (void)setImage:(UIImage *)image forButton:(UIButton *)button;
++ (void)setBackgroundImage:(UIImage *)image forButton:(UIButton *)button;
 + (void)setText:(NSString *)text forButton:(UIButton *)button;
 + (UIView *)getFirstResponderInView:(UIView *)view;
 + (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range;
@@ -50,8 +51,10 @@
 + (UIImage *)createThumbnailForImage:(UIImage *)image ofSize:(CGSize)size opaque:(BOOL)opaque;
 + (NSNumber *)angleForDeviceOrientation:(UIDeviceOrientation)orientation;
 + (NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation;
++ (CGFloat)angleForImageOrientation:(UIImageOrientation)orientation;
 + (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation;
 + (void)rotateViewAnimated:(UIView *)view fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion;
 + (void)rotateViewsAnimated:(NSArray *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion;
 + (void)flipView:(UIView *)view horizontally:(BOOL)horizontally toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion;
++ (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)frame;
 @end
