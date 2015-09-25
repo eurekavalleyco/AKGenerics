@@ -57,4 +57,5 @@
 + (void)rotateViewsAnimated:(NSArray *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion;
 + (void)flipView:(UIView *)view horizontally:(BOOL)horizontally toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion;
 + (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)frame;
++ (NSUInteger)length:(NSString *)string;
 @end

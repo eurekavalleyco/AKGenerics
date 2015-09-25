@@ -489,6 +489,15 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return croppedImage;
 }
 
++ (NSUInteger)length:(NSString *)string
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:nil message:nil];
+    
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet nonBaseCharacterSet];
+    [characterSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
+    return [[string componentsSeparatedByCharactersInSet:characterSet] componentsJoinedByString:@""].length;
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
