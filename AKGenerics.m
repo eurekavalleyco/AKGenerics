@@ -498,6 +498,13 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return [[string componentsSeparatedByCharactersInSet:characterSet] componentsJoinedByString:@""].length;
 }
 
++ (BOOL)text:(NSString *)text onlyContainsCharactersInSet:(NSCharacterSet *)characterSet
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator customCategories:nil message:nil];
+    
+    return [AKGenerics object:text isEqualToObject:[[text componentsSeparatedByCharactersInSet:characterSet.invertedSet] componentsJoinedByString:@""]];
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //
