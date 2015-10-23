@@ -104,17 +104,20 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 
 + (UIView *)getFirstResponderInView:(UIView *)view
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:nil message:nil];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
     
-    UIView *firstResponder;
     NSMutableArray *subviews = [[NSMutableArray alloc] initWithObjects:view, nil];
-    do {
-        UIView *subview = [subviews firstObject];
-        if (subview.isFirstResponder) firstResponder = subview;
-        else [subviews addObjectsFromArray:subview.subviews];
+    UIView *subview;
+    while (subviews.count)
+    {
+        subview = [subviews firstObject];
+        if (subview.isFirstResponder) return subview;
+        
+        [subviews addObjectsFromArray:subview.subviews];
         [subviews removeObject:subview];
-    } while ((!firstResponder) && (subviews.count));
-    return firstResponder;
+    }
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:[NSString stringWithFormat:@"No first responder in %@", stringFromVariable(view)]];
+    return nil;
 }
 
 + (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range
