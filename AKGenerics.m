@@ -505,6 +505,15 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return [AKGenerics object:text isEqualToObject:[[text componentsSeparatedByCharactersInSet:characterSet.invertedSet] componentsJoinedByString:@""]];
 }
 
++ (UIAlertController *)alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^)(UIAlertAction *))completion
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified customCategories:@[AKD_UI] message:nil];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
+    [alertController addAction:[UIAlertAction actionWithTitle:actionText style:actionStyle handler:completion]];
+    return alertController;
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

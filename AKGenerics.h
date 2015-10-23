@@ -59,4 +59,5 @@
 + (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)frame;
 + (NSUInteger)length:(NSString *)string;
 + (BOOL)text:(NSString *)text onlyContainsCharactersInSet:(NSCharacterSet *)characterSet;
++ (UIAlertController *)alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^)(UIAlertAction *))completion;
 @end
