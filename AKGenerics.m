@@ -12,7 +12,6 @@
 
 #import "AKGenerics.h"
 #import "AKDebugger.h"
-#import "AKSystemInfo.h"
 #import <QuartzCore/QuartzCore.h>
 
 #pragma mark - // DEFINITIONS (Private) //
@@ -214,7 +213,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
     
     UITableViewCell *cell;
-    if (([AKSystemInfo iOSVersion] < 7.0) || (!fromStoryboard))
+    if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) || (!fromStoryboard))
     {
         cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
         if (!cell) cell = [[NSClassFromString(className) alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
