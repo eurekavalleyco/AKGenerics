@@ -208,7 +208,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return [[[UIApplication sharedApplication] delegate] window];
 }
 
-+ (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(NSString *)className style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard
++ (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(Class)cellClass style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter customCategories:@[AKD_UI] message:nil];
     
@@ -216,7 +216,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) || (!fromStoryboard))
     {
         cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-        if (!cell) cell = [[NSClassFromString(className) alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
+        if (!cell) cell = [[cellClass alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
     }
     else cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     return cell;
