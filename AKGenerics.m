@@ -115,7 +115,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
         [subviews addObjectsFromArray:subview.subviews];
         [subviews removeObject:subview];
     }
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeGetter tags:@[AKD_UI] message:[NSString stringWithFormat:@"No first responder in %@", stringFromVariable(view)]];
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeInfo methodType:AKMethodTypeGetter tags:@[AKD_UI] message:[NSString stringWithFormat:@"No first responder in %@", stringFromVariable(view)]];
     return nil;
 }
 
