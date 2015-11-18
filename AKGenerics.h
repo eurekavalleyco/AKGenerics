@@ -20,7 +20,7 @@
 
 #define stringFromVariable(variable) (@""#variable)
 #define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObject"
-#define NOTIFICATION_OLD_KEY @"kNotificationOldKeyObject"
+#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldObject"
 
 @interface AKGenerics : NSObject
 + (BOOL)object:(id)object1 isEqualToObject:(id)object2;
