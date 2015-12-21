@@ -516,6 +516,34 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return alertController;
 }
 
++ (void)scrollToView:(UIView *)view inScrollView:(UIScrollView *)scrollView animated:(BOOL)animated
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+    
+    if (![AKGenerics view:view isEventualSubviewOfView:scrollView])
+    {
+        [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:[NSString stringWithFormat:@"%@ is not subview of %@", stringFromVariable(view), stringFromVariable(scrollView)]];
+        return;
+    }
+    
+    CGRect rect = [scrollView convertRect:view.frame fromView:view.superview];
+    [scrollView scrollRectToVisible:rect animated:animated];
+}
+
++ (void)setFrameForView:(UIView *)view withOriginX:(NSNumber *)originX originY:(NSNumber *)originY width:(NSNumber *)width height:(NSNumber *)height
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
+    
+    if (!view) return;
+    
+    CGRect frame = view.frame;
+    if (originX) frame = CGRectMake(originX.floatValue, frame.origin.y, frame.size.width, frame.size.height);
+    if (originY) frame = CGRectMake(frame.origin.x, originY.floatValue, frame.size.width, frame.size.height);
+    if (width) frame = CGRectMake(frame.origin.x, frame.origin.y, width.floatValue, frame.size.height);
+    if (height) frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, height.floatValue);
+    [view setFrame:frame];
+}
+
 #pragma mark - // DELEGATED METHODS //
 
 #pragma mark - // OVERWRITTEN METHODS //

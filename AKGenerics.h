@@ -60,4 +60,6 @@
 + (NSUInteger)length:(NSString *)string;
 + (BOOL)text:(NSString *)text onlyContainsCharactersInSet:(NSCharacterSet *)characterSet;
 + (UIAlertController *)alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^)(UIAlertAction *))completion;
++ (void)scrollToView:(UIView *)view inScrollView:(UIScrollView *)scrollView animated:(BOOL)animated;
++ (void)setFrameForView:(UIView *)view withOriginX:(NSNumber *)originX originY:(NSNumber *)originY width:(NSNumber *)width height:(NSNumber *)height;
 @end
