@@ -48,6 +48,13 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     
     if ([object1 isKindOfClass:[NSHashTable class]] && [object2 isKindOfClass:[NSHashTable class]]) return [object1 isEqualToHashTable:object2];
     
+    if ([object1 isKindOfClass:[NSIndexPath class]] && [object2 isKindOfClass:[NSIndexPath class]])
+    {
+        NSIndexPath *indexPath1 = (NSIndexPath *)object1;
+        NSIndexPath *indexPath2 = (NSIndexPath *)object2;
+        return ((indexPath1.section == indexPath2.section) && ((indexPath1.row == indexPath2.row) || (indexPath1.item == indexPath2.item)));
+    }
+    
     if ([object1 isKindOfClass:[NSIndexSet class]] && [object2 isKindOfClass:[NSIndexSet class]]) return [object1 isEqualToIndexSet:object2];
     
     if ([object1 isKindOfClass:[NSNumber class]] && [object2 isKindOfClass:[NSNumber class]]) return [object1 isEqualToNumber:object2];
