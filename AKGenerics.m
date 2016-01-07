@@ -267,13 +267,13 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count];
 }
 
-+ (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText
++ (id)valueForBool:(BOOL)boolValue yesValue:(id)yesValue noValue:(id)noValue
 {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
-    if (boolValue) return yesText;
+    if (boolValue) return yesValue;
     
-    return noText;
+    return noValue;
 }
 
 + (NSString *)pluralizationForCount:(NSInteger)count singular:(NSString *)singular plural:(NSString *)plural

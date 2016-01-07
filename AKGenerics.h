@@ -41,7 +41,7 @@
 + (void)incrementBadge;
 + (void)decrementBadge;
 + (void)setBadgeToCount:(NSUInteger)count;
-+ (NSString *)textForBool:(BOOL)boolValue yesText:(NSString *)yesText noText:(NSString *)noText;
++ (id)valueForBool:(BOOL)boolValue yesValue:(id)yesValue noValue:(id)noValue;
 + (NSString *)pluralizationForCount:(NSInteger)count singular:(NSString *)singular plural:(NSString *)plural;
 + (void)postNotificationName:(NSString *)notificationName object:(id)object userInfo:(NSDictionary *)userInfo;
 + (NSData *)convertDictionaryToData:(NSDictionary *)dictionary;
