@@ -19,8 +19,8 @@
 #pragma mark - // DEFINITIONS (Public) //
 
 #define stringFromVariable(variable) (@""#variable)
-#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObject"
-#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldObject"
+#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObjectKey"
+#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldKey"
 
 @interface AKGenerics : NSObject
 + (BOOL)object:(id)object1 isEqualToObject:(id)object2;
