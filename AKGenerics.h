@@ -21,6 +21,9 @@
 #define stringFromVariable(variable) (@""#variable)
 #define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObjectKey"
 #define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldKey"
+#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
+
+#define NOTIFICATION_UIVIEWCONTROLLER_EDITING_DID_CHANGE @"kNotificationUIViewController_EditingDidChange"
 
 @interface AKGenerics : NSObject
 + (BOOL)object:(id)object1 isEqualToObject:(id)object2;
