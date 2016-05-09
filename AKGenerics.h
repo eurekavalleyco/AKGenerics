@@ -16,53 +16,146 @@
 
 #pragma mark - // PROTOCOLS //
 
-#pragma mark - // DEFINITIONS (Public) //
+#pragma mark - // DEFINITIONS (AKGenerics) //
+
+#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObjectKey"
+#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
+#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldKey"
+#define NOTIFICATION_NEW_KEY @"kNotificationUserInfoNewKey"
+//#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
 
 #define stringFromVariable(variable) (@""#variable)
-#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObjectKey"
-#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldKey"
-#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
-
-#define NOTIFICATION_UIVIEWCONTROLLER_EDITING_DID_CHANGE @"kNotificationUIViewController_EditingDidChange"
 
 @interface AKGenerics : NSObject
-+ (BOOL)object:(id)object1 isEqualToObject:(id)object2;
-+ (void)setImage:(UIImage *)image forButton:(UIButton *)button;
-+ (void)setBackgroundImage:(UIImage *)image forButton:(UIButton *)button;
-+ (void)setText:(NSString *)text forButton:(UIButton *)button;
-+ (UIView *)getFirstResponderInView:(UIView *)view;
-+ (void)selectTextForTextField:(UITextField *)textField inRange:(NSRange)range;
-+ (UIImage *)image:(UIImage *)image setAlpha:(CGFloat)alpha;
-+ (NSString *)randomStringWithCharacters:(NSString *)charactersString length:(NSUInteger)length;
-+ (BOOL)view:(UIView *)view isEventualSubviewOfView:(UIView *)parentView;
-+ (BOOL)isEmail:(NSString *)email;
-+ (UIViewController *)rootViewController;
-+ (UIWindow *)fullscreenWindow;
-+ (UITableViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier class:(Class)cellClass style:(UITableViewCellStyle)style tableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
-+ (UICollectionViewCell *)cellWithReuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)indexPath;
-+ (void)clearAllTextFieldsInAlertController:(UIAlertController *)alertController;
++ (BOOL)object:(nullable id)object1 isEqualToObject:(nullable id)object2;
++ (nullable UIViewController *)rootViewController;
++ (nonnull UIWindow *)fullscreenWindow;
 + (void)incrementBadge;
 + (void)decrementBadge;
 + (void)setBadgeToCount:(NSUInteger)count;
-+ (id)valueForBool:(BOOL)boolValue yesValue:(id)yesValue noValue:(id)noValue;
-+ (NSString *)pluralizationForCount:(NSInteger)count singular:(NSString *)singular plural:(NSString *)plural;
-+ (void)postNotificationName:(NSString *)notificationName object:(id)object userInfo:(NSDictionary *)userInfo;
-+ (NSData *)convertDictionaryToData:(NSDictionary *)dictionary;
-+ (NSDictionary *)convertDataToDictionary:(NSData *)data;
-+ (void)addBorderToView:(UIView *)view withColor:(CGColorRef)color width:(CGFloat)width;
-+ (void)addShadowToView:(UIView *)view withShadowRadius:(CGFloat)shadowRadius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset shadowColor:(CGColorRef)color opacity:(float)opacity;
-+ (UIImage *)createThumbnailForImage:(UIImage *)image ofSize:(CGSize)size opaque:(BOOL)opaque;
-+ (NSNumber *)angleForDeviceOrientation:(UIDeviceOrientation)orientation;
-+ (NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation;
++ (nullable id)valueForBool:(BOOL)boolValue yesValue:(nullable id)yesValue noValue:(nullable id)noValue;
++ (nullable NSString *)pluralizationForCount:(NSUInteger)count singular:(nullable NSString *)singular plural:(nullable NSString *)plural;
++ (void)postNotificationName:(nonnull NSString *)notificationName object:(nullable id)object userInfo:(nullable NSDictionary *)userInfo;
++ (nullable NSNumber *)angleForDeviceOrientation:(UIDeviceOrientation)orientation;
++ (nullable NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation;
 + (CGFloat)angleForImageOrientation:(UIImageOrientation)orientation;
 + (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation;
-+ (void)rotateViewAnimated:(UIView *)view fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion;
-+ (void)rotateViewsAnimated:(NSArray *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(void (^)(void))completion;
-+ (void)flipView:(UIView *)view horizontally:(BOOL)horizontally toPosition:(CGFloat)radians withAnimations:(void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion;
-+ (UIImage *)cropImage:(UIImage *)image toFrame:(CGRect)frame;
-+ (NSUInteger)length:(NSString *)string;
-+ (BOOL)text:(NSString *)text onlyContainsCharactersInSet:(NSCharacterSet *)characterSet;
-+ (UIAlertController *)alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^)(UIAlertAction *))completion;
-+ (void)scrollToView:(UIView *)view inScrollView:(UIScrollView *)scrollView animated:(BOOL)animated;
-+ (void)setFrameForView:(UIView *)view withOriginX:(NSNumber *)originX originY:(NSNumber *)originY width:(NSNumber *)width height:(NSNumber *)height;
++ (void)rotateViews:(nonnull NSArray <UIView *> *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion;
++ (CGFloat)statusBarHeight;
+@end
+
+#pragma mark - // DEFINITIONS (NSArray) //
+
+@interface NSArray (AKGenerics)
++ (nonnull instancetype)arrayWithValue:(float)value increment:(float)increment length:(NSUInteger)length;
++ (nonnull instancetype)arrayWithStartValue:(NSInteger)startValue endValue:(NSUInteger)endValue;
++ (nonnull instancetype)arrayWithLength:(NSUInteger)length block:(nonnull id _Nonnull (^)(NSUInteger index))block;
+@end
+
+#pragma mark - // DEFINITIONS (NSData) //
+
+@interface NSData (AKGenerics)
+- (nonnull NSData *)AES256EncryptWithKey:(nonnull NSString *)key;
+- (nonnull NSData *)AES256DecryptWithKey:(nonnull NSString *)key;
+- (nonnull NSDictionary *)convertToDictionary;
+@end
+
+#pragma mark - // DEFINITIONS (NSDictionary) //
+
+@interface NSDictionary (AKGenerics)
++ (nonnull instancetype)dictionaryWithNullableObject:(nullable id)object forKey:(nonnull id <NSCopying>)key;
+- (nonnull NSData *)convertToData;
+@end
+
+#pragma mark - // DEFINITIONS (NSMutableDictionary) //
+
+@interface NSMutableDictionary (AKGenerics)
+- (void)setNullableObject:(nullable id)anObject forKey:(nonnull id <NSCopying>)aKey;
+@end
+
+#pragma mark - // DEFINITIONS (NSString) //
+
+@interface NSString (AKGenerics)
++ (nonnull instancetype)randomStringWithCharacters:(nonnull NSString *)charactersString length:(NSUInteger)length;
+- (BOOL)isEmail;
+- (nonnull instancetype)encryptedStringUsingKey:(nonnull NSString *)key;
+- (nonnull instancetype)decryptedStringUsingKey:(nonnull NSString *)key;
+- (NSUInteger)length;
+- (BOOL)onlyContainsCharactersInSet:(nonnull NSCharacterSet *)characterSet;
+@end
+
+#pragma mark - // DEFINITIONS (UIAlertController) //
+
+@interface UIAlertController (AKGenerics)
++ (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actions:(nullable NSArray <NSString *> *)actions preferredAction:(nullable NSString *)preferredAction dismissalText:(nullable NSString *)dismissalText completion:(nullable void (^)(UIAlertAction * _Nonnull action))completionBlock;
+//+ (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(nullable NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^ _Nullable)(UIAlertAction * _Nonnull))completion;
+- (void)clearTextFields;
+//- (nonnull void(^)(void))clearTextFieldsBlock;
+@end
+
+//#pragma mark - // DEFINITIONS (UIButton) //
+//
+//@interface UIButton (AKGenerics)
+//- (void)setImage:(nullable UIImage *)image;
+//- (void)setBackgroundImage:(nullable UIImage *)image;
+//- (void)setText:(nullable NSString *)text;
+//@end
+
+#pragma mark - // DEFINITIONS (UICollectionViewCell) //
+
+@interface UICollectionViewCell (AKGenerics)
++ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier collectionView:(nonnull UICollectionView *)collectionView atIndexPath:(nonnull NSIndexPath *)indexPath;
+@end
+
+#pragma mark - // DEFINITIONS (UIColor) //
+
+@interface UIColor (AKGenerics)
++ (nonnull instancetype)iOSBlue;
+@end
+
+#pragma mark - // DEFINITIONS (UIImage) //
+
+@interface UIImage (AKGenerics)
+- (nonnull instancetype)imageWithAlpha:(CGFloat)alpha;
+- (nonnull instancetype)thumbnailWithSize:(CGSize)size opaque:(BOOL)opaque;
+- (nonnull instancetype)croppedImageWithFrame:(CGRect)frame;
+@end
+
+#pragma mark - // DEFINITIONS (UIScrollView) //
+
+@interface UIScrollView (AKGenerics)
+- (void)scrollToView:(nonnull UIView *)view animated:(BOOL)animated;
+@end
+
+#pragma mark - // DEFINITIONS (UITableViewCell) //
+
+@interface UITableViewCell (AKGenerics)
++ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier class:(nonnull Class)cellClass style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
++ (CGFloat)defaultHeight;
+@end
+
+#pragma mark - // DEFINITIONS (UITextField) //
+
+@interface UITextField (AKGenerics)
+- (void)selectTextInRange:(NSRange)range;
+@end
+
+#pragma mark - // DEFINITIONS (UIView) //
+
+@interface UIView (AKGenerics)
+- (nullable UIView *)firstResponder;
+- (BOOL)isEventualSubviewOfView:(nonnull UIView *)view;
+- (void)setFrameWithOriginX:(nullable NSNumber *)originX originY:(nullable NSNumber *)originY width:(nullable NSNumber *)width height:(nullable NSNumber *)height;
+- (void)setFrameWithCenterX:(nullable NSNumber *)centerX centerY:(nullable NSNumber *)centerY width:(nullable NSNumber *)width height:(nullable NSNumber *)height;
+- (void)addBorderWithColor:(nonnull CGColorRef)color width:(CGFloat)width;
+- (void)addShadowWithColor:(nonnull CGColorRef)color opacity:(float)opacity radius:(CGFloat)radius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset;
+- (void)rotateFromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion;
+- (void)flipHorizontally:(CGFloat)radians withAnimations:(nullable void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(nullable void (^)(BOOL))completion;
+- (void)flipVertically:(CGFloat)radians withAnimations:(nullable void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(nullable void (^)(BOOL))completion;
+@end
+
+#pragma mark - // DEFINITIONS (UIViewController) //
+
+@interface UIViewController (AKGenerics)
+- (void)performBlockOnChildViewControllers:(nonnull void (^)(UIViewController * _Nonnull childViewController))block;
 @end
