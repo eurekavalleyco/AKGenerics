@@ -274,6 +274,59 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
     return [UIApplication sharedApplication].statusBarFrame.size.height;
 }
 
++ (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPathsToInsert:(NSArray *__autoreleasing  _Nonnull * _Nonnull)indexPaths withSection:(NSUInteger)section {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+    
+    NSMutableArray *indexPathsToInsert = [NSMutableArray array];
+    NSUInteger index;
+    for (id obj in newArray) {
+        if (![array containsObject:obj]) {
+            index = [newArray indexOfObject:obj];
+            [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:index inSection:section]];
+        }
+    }
+    
+    *indexPaths = [NSArray arrayWithArray:indexPathsToInsert];
+}
+
++ (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPaths:(NSArray * _Nonnull * _Nonnull)indexPaths toMoveToIndexPaths:(NSArray * _Nonnull * _Nonnull)newIndexPaths withSection:(NSUInteger)section {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+    
+    NSAssert(array.count == newArray.count, @"%@ and %@ must have the same number of items", stringFromVariable(array), stringFromVariable(newArray));
+    
+    NSAssert([[NSSet setWithArray:array] isEqualToSet:[NSSet setWithArray:newArray]], @"%@ and %@ must have the same items", stringFromVariable(array), stringFromVariable(newArray));
+    
+    NSMutableArray *fromIndexPaths = [NSMutableArray array];
+    NSMutableArray *toIndexPaths = [NSMutableArray array];
+    NSUInteger index, newIndex;
+    for (id obj in array) {
+        index = [array indexOfObject:obj];
+        newIndex = [newArray indexOfObject:obj];
+        if (index != newIndex) {
+            [fromIndexPaths addObject:[NSIndexPath indexPathForRow:index inSection:section]];
+            [toIndexPaths addObject:[NSIndexPath indexPathForRow:newIndex inSection:section]];
+        }
+    }
+    
+    *indexPaths = [NSArray arrayWithArray:fromIndexPaths];
+    *newIndexPaths = [NSArray arrayWithArray:toIndexPaths];
+}
+
++ (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPathsToDelete:(NSArray *__autoreleasing  _Nonnull * _Nonnull)indexPaths withSection:(NSUInteger)section {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+    
+    NSMutableArray *indexPathsToDelete = [NSMutableArray array];
+    NSUInteger index;
+    for (id obj in array) {
+        if (![newArray containsObject:obj]) {
+            index = [array indexOfObject:obj];
+            [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:index inSection:section]];
+        }
+    }
+    
+    *indexPaths = [NSArray arrayWithArray:indexPathsToDelete];
+}
+
 #pragma mark Private Methods
 
 CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
