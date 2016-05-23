@@ -516,6 +516,46 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     return dictionary;
 }
 
+- (nonnull NSSet *)pathURLs {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+    
+    NSMutableSet *pathURLs = [NSMutableSet set];
+    NSMutableArray *keyArrays = [NSMutableArray arrayWithCapacity:self.allKeys.count];
+    for (NSString *key in self.allKeys) {
+        [keyArrays addObject:@[key]];
+    }
+    NSArray *keyArray, *subkeyArray;
+    id child;
+    NSDictionary *dictionary;
+    NSURL *pathURL;
+    while (keyArrays.count) {
+        keyArray = keyArrays.firstObject;
+        child = self;
+        for (int i = 0; i < keyArray.count; i++) {
+            child = child[keyArray[i]];
+        }
+        if ([child isKindOfClass:[NSDictionary class]]) {
+            dictionary = (NSDictionary *)child;
+            if (dictionary.allKeys.count) {
+                for (NSString *subkey in dictionary.allKeys) {
+                    subkeyArray = [keyArray arrayByAddingObject:subkey];
+                    [keyArrays addObject:subkeyArray];
+                }
+            }
+            else {
+                pathURL = [NSURL fileURLWithPathComponents:keyArray];
+                [pathURLs addObject:pathURL];
+            }
+        }
+        else {
+            pathURL = [NSURL fileURLWithPathComponents:keyArray];
+            [pathURLs addObject:pathURL];
+        }
+        [keyArrays removeObject:keyArray];
+    }
+    return [NSSet setWithSet:pathURLs];
+}
+
 - (nonnull NSData *)convertToData {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     

@@ -67,6 +67,7 @@
 
 @interface NSDictionary (AKGenerics)
 + (nonnull instancetype)dictionaryWithNullableObject:(nullable id)object forKey:(nonnull id <NSCopying>)key;
+- (nonnull NSSet *)pathURLs;
 - (nonnull NSData *)convertToData;
 @end
 
