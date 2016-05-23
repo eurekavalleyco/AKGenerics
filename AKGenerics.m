@@ -794,14 +794,14 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 #pragma mark Public Methods
 
-+ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier class:(nonnull Class)cellClass style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard {
++ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     UITableViewCell *cell;
     if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) || (!fromStoryboard)) {
         cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
         if (!cell) {
-            cell = [[cellClass alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
+            cell = [[self alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
         }
     }
     else {

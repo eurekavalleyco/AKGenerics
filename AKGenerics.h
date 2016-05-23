@@ -144,7 +144,7 @@
 #pragma mark - // DEFINITIONS (UITableViewCell) //
 
 @interface UITableViewCell (AKGenerics)
-+ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier class:(nonnull Class)cellClass style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
++ (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard;
 + (CGFloat)defaultHeight;
 @end
 
