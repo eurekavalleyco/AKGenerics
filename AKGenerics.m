@@ -411,6 +411,78 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     return array;
 }
 
+- (nonnull instancetype)sortedArray:(BOOL)ascending {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+    
+    return [self sortedArrayUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
+        NSNumber *value1 = [NSArray sortValueForObject:obj1];
+        NSNumber *value2 = [NSArray sortValueForObject:obj2];
+        
+        if (value1 && value2) {
+            return ascending ? [value1 compare:value2] : [value2 compare:value1];
+        }
+        
+        if (value1 && !value2) {
+            return NSOrderedAscending;
+        }
+        
+        if (!value1 && value2) {
+            return NSOrderedDescending;
+        }
+        
+        NSString *string1 = [NSArray sortStringForObject:obj1];
+        NSString *string2 = [NSArray sortStringForObject:obj2];
+        
+        if (string1 && string2) {
+            return ascending ? [string1 compare:string2] : [string2 compare:string1];
+        }
+        
+        if (string1 && !string2) {
+            return NSOrderedAscending;
+        }
+        
+        if (!string1 && string2) {
+            return NSOrderedDescending;
+        }
+        
+        return NSOrderedSame;
+    }];
+}
+
+#pragma mark Private Methods
+
++ (NSNumber *)sortValueForObject:(id _Nonnull)obj {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+    
+    if ([obj isKindOfClass:[NSNumber class]]) {
+        return obj;
+    }
+    
+    if ([obj isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)obj;
+        if (string.isNumeric) {
+            return [NSNumber numberWithFloat:string.floatValue];
+        }
+    }
+    
+    return nil;
+}
+
++ (NSString *)sortStringForObject:(id _Nonnull)obj {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+    
+    if ([obj isKindOfClass:[NSString class]]) {
+        return obj;
+    }
+    
+    if ([obj isKindOfClass:[NSAttributedString class]]) {
+        NSAttributedString *attributedString = (NSAttributedString *)obj;
+        return attributedString.string;
+    }
+    
+    return nil;
+}
+
 @end
 
 #pragma mark - // IMPLEMENTATION (NSData) //
