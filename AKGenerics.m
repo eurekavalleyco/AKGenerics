@@ -529,6 +529,12 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     return (range.length > 0);
 }
 
+- (BOOL)isNumeric {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
+    
+    return [[NSCharacterSet decimalDigitCharacterSet] isSupersetOfSet:[NSCharacterSet characterSetWithCharactersInString:self]];
+}
+
 - (nonnull instancetype)encryptedStringUsingKey:(nonnull NSString *)key {
     [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
     

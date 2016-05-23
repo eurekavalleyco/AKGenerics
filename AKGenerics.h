@@ -85,6 +85,7 @@
 @interface NSString (AKGenerics)
 + (nonnull instancetype)randomStringWithCharacters:(nonnull NSString *)charactersString length:(NSUInteger)length;
 - (BOOL)isEmail;
+- (BOOL)isNumeric;
 - (nonnull instancetype)encryptedStringUsingKey:(nonnull NSString *)key;
 - (nonnull instancetype)decryptedStringUsingKey:(nonnull NSString *)key;
 - (NSUInteger)length;
