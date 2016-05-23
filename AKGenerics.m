@@ -765,6 +765,29 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 @end
 
+#pragma mark - // IMPLEMENTATION (UITableView) //
+
+@implementation UITableView (AKGenerics)
+
+#pragma mark Public Methods
+
+- (void)moveRowsAtIndexPaths:(NSArray <NSIndexPath *> *)indexPaths toIndexPaths:(NSArray <NSIndexPath *> *)newIndexPaths {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+    
+    NSAssert(indexPaths.count == newIndexPaths.count, @"%@ and %@ must have the same number of items", stringFromVariable(indexPaths), stringFromVariable(newIndexPaths));
+    
+    [self beginUpdates];
+    NSIndexPath *indexPath, *newIndexPath;
+    for (int i = 0; i < indexPaths.count; i++) {
+        indexPath = indexPaths[i];
+        newIndexPath = newIndexPaths[i];
+        [self moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+    }
+    [self endUpdates];
+}
+
+@end
+
 #pragma mark - // IMPLEMENTATION (UITableViewCell) //
 
 @implementation UITableViewCell (AKGenerics)

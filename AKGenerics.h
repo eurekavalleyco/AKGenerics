@@ -135,6 +135,12 @@
 - (void)scrollToView:(nonnull UIView *)view animated:(BOOL)animated;
 @end
 
+#pragma mark - // DEFINITIONS (UITableView) //
+
+@interface UITableView (AKGenerics)
+- (void)moveRowsAtIndexPaths:(nonnull NSArray <NSIndexPath *> *)indexPaths toIndexPaths:(nonnull NSArray <NSIndexPath *> *)newIndexPaths;
+@end
+
 #pragma mark - // DEFINITIONS (UITableViewCell) //
 
 @interface UITableViewCell (AKGenerics)
