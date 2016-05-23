@@ -487,6 +487,24 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 @end
 
+#pragma mark - // IMPLEMENTATION (NSObject) //
+
+@implementation NSObject (AKGenerics)
+
+#pragma mark Public Methods
+
+- (void)setup
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
+}
+
+- (void)teardown
+{
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
+}
+
+@end
+
 #pragma mark - // IMPLEMENTATION (NSString) //
 
 @implementation NSString (AKGenerics)

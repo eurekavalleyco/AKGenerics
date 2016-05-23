@@ -73,6 +73,13 @@
 - (void)setNullableObject:(nullable id)anObject forKey:(nonnull id <NSCopying>)aKey;
 @end
 
+#pragma mark - // DEFINITIONS (NSObject) //
+
+@interface NSObject (AKGenerics)
+- (void)setup;
+- (void)teardown;
+@end
+
 #pragma mark - // DEFINITIONS (NSString) //
 
 @interface NSString (AKGenerics)
