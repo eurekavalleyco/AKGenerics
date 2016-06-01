@@ -11,8 +11,7 @@
 #pragma mark - // IMPORTS (Private) //
 
 #import "AKGenerics.h"
-#import "AKDebugger.h"
-
+//#import "AKDebugger.h"
 #import <QuartzCore/QuartzCore.h>
 
 #pragma mark - // DEFINITIONS (Private) //
@@ -33,7 +32,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 #pragma mark Public Methods
 
 + (BOOL)object:(nullable id)object1 isEqualToObject:(nullable id)object2 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
     
     // nil == nil
     if (!object1 && !object2) {
@@ -119,37 +118,37 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (nullable UIViewController *)rootViewController {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     return [UIApplication sharedApplication].delegate.window.rootViewController;
 }
 
 + (nonnull UIWindow *)fullscreenWindow {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     return [UIApplication sharedApplication].delegate.window;
 }
 
 + (void)incrementBadge {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber+1;
 }
 
 + (void)decrementBadge {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber-1;
 }
 
 + (void)setBadgeToCount:(NSUInteger)count {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = count;
 }
 
 + (nullable id)valueForBool:(BOOL)boolValue yesValue:(nullable id)yesValue noValue:(nullable id)noValue {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     if (boolValue) {
         return yesValue;
@@ -159,7 +158,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (nullable NSString *)pluralizationForCount:(NSUInteger)count singular:(nullable NSString *)singular plural:(nullable NSString *)plural {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     if (count == 1) {
         return singular;
@@ -169,7 +168,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (void)postNotificationName:(nonnull NSString *)notificationName object:(nullable id)object userInfo:(nullable NSDictionary *)userInfo {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_NOTIFICATION_CENTER] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_NOTIFICATION_CENTER] message:nil];
     
     if ([NSThread isMainThread]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:object userInfo:userInfo];
@@ -182,7 +181,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (nullable NSNumber *)angleForDeviceOrientation:(UIDeviceOrientation)orientation {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     switch (orientation) {
         case UIDeviceOrientationLandscapeRight:
@@ -201,7 +200,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (nullable NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     switch (orientation) {
         case UIInterfaceOrientationLandscapeLeft:
@@ -218,7 +217,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (CGFloat)angleForImageOrientation:(UIImageOrientation)orientation {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     switch (orientation) {
         case UIImageOrientationDown:
@@ -237,7 +236,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     switch (interfaceOrientation) {
         case UIInterfaceOrientationPortrait:
@@ -249,38 +248,19 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
         case UIInterfaceOrientationLandscapeLeft:
             return AVCaptureVideoOrientationLandscapeLeft;
         case UIInterfaceOrientationUnknown:
-            [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeWarning methodType:AKMethodTypeGetter tags:@[AKD_UI] message:[NSString stringWithFormat:@"Cannot convert %@ to %@", stringFromVariable(interfaceOrientation), @"AVCaptureVideoOrientation"]];
+//            [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeWarning methodType:AKMethodTypeGetter tags:@[AKD_UI] message:[NSString stringWithFormat:@"Cannot convert %@ to %@", stringFromVariable(interfaceOrientation), @"AVCaptureVideoOrientation"]];
             return 0.0;
     }
 }
 
-+ (void)rotateViews:(nonnull NSArray <UIView *> *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
-    
-    for (UIView *view in views) {
-        view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, fromAngle);
-    }
-    [CATransaction begin];
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.byValue = [NSNumber numberWithFloat:angle];
-    rotationAnimation.duration = duration;
-    rotationAnimation.removedOnCompletion = NO;
-    rotationAnimation.fillMode = kCAFillModeForwards;
-    [CATransaction setCompletionBlock:completion];
-    for (UIView *view in views) {
-        [view.layer addAnimation:rotationAnimation forKey:stringFromVariable(rotationAnimation)];
-    }
-    [CATransaction commit];
-}
-
 + (CGFloat)statusBarHeight {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     return [UIApplication sharedApplication].statusBarFrame.size.height;
 }
 
 + (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPathsToInsert:(NSArray *__autoreleasing  _Nonnull * _Nonnull)indexPaths withSection:(NSUInteger)section {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     NSMutableArray *indexPathsToInsert = [NSMutableArray array];
     NSUInteger index;
@@ -295,7 +275,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPaths:(NSArray * _Nonnull * _Nonnull)indexPaths toMoveToIndexPaths:(NSArray * _Nonnull * _Nonnull)newIndexPaths withSection:(NSUInteger)section {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     NSAssert(array.count == newArray.count, @"%@ and %@ must have the same number of items", stringFromVariable(array), stringFromVariable(newArray));
     
@@ -318,7 +298,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 }
 
 + (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPathsToDelete:(NSArray *__autoreleasing  _Nonnull * _Nonnull)indexPaths withSection:(NSUInteger)section {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     NSMutableArray *indexPathsToDelete = [NSMutableArray array];
     NSUInteger index;
@@ -335,7 +315,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 #pragma mark Private Methods
 
 CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     CGSize imageSize = CGSizeMake(CGImageGetWidth(originalCGImage), CGImageGetHeight(originalCGImage));
     CGSize rotatedSize = imageSize;
@@ -381,20 +361,20 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)arrayWithValue:(float)value increment:(float)increment length:(NSUInteger)length {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:length];
     for (int i = 0; i < length; i++) {
         [array addObject:[NSNumber numberWithFloat:value+i*increment]];
     }
-    return array;
+    return [[self class] arrayWithArray:array];
 }
 
 + (nonnull instancetype)arrayWithStartValue:(NSInteger)startValue endValue:(NSUInteger)endValue {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     if (startValue == endValue) {
-        return @[[NSNumber numberWithInteger:startValue]];
+        return [[self class] arrayWithObject:[NSNumber numberWithInteger:startValue]];
     }
     
     NSUInteger increment = (startValue < endValue) ? 1 : -1;
@@ -403,21 +383,21 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     for (int i = 0; i < count; i++) {
         [array addObject:[NSNumber numberWithInteger:startValue+i*increment]];
     }
-    return array;
+    return [[self class] arrayWithArray:array];
 }
 
 + (nonnull instancetype)arrayWithLength:(NSUInteger)length block:(nonnull id _Nonnull (^)(NSUInteger index))block {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:length];
     for (int i = 0; i < length; i++) {
         [array addObject:block(i)];
     }
-    return array;
+    return [[self class] arrayWithArray:array];
 }
 
 - (nonnull instancetype)sortedArray:(BOOL)ascending {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     return [self sortedArrayUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
         NSNumber *value1 = [NSArray sortValueForObject:obj1];
@@ -457,7 +437,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Private Methods
 
 + (NSNumber *)sortValueForObject:(id _Nonnull)obj {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     if ([obj isKindOfClass:[NSNumber class]]) {
         return obj;
@@ -474,7 +454,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 + (NSString *)sortStringForObject:(id _Nonnull)obj {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     if ([obj isKindOfClass:[NSString class]]) {
         return obj;
@@ -500,8 +480,8 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 #pragma mark Public Methods
 
-- (nonnull NSData *)AES256EncryptWithKey:(nonnull NSString *)key {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
+- (nonnull instancetype)AES256EncryptWithKey:(nonnull NSString *)key {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
     
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
     char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
@@ -527,15 +507,15 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
                                           &numBytesEncrypted);
     if (cryptStatus == kCCSuccess) {
         //the returned NSData takes ownership of the buffer and will free it on deallocation
-        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+        return [[self class] dataWithBytesNoCopy:buffer length:numBytesEncrypted];
     }
     
     free(buffer); //free the buffer;
     return nil;
 }
 
-- (nonnull NSData *)AES256DecryptWithKey:(nonnull NSString *)key {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
+- (nonnull instancetype)AES256DecryptWithKey:(nonnull NSString *)key {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
     
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
     char keyPtr[kCCKeySizeAES256+1]; // room for terminator (unused)
@@ -562,7 +542,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     
     if (cryptStatus == kCCSuccess) {
         //the returned NSData takes ownership of the buffer and will free it on deallocation
-        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+        return [[self class] dataWithBytesNoCopy:buffer length:numBytesDecrypted];
     }
     
     free(buffer); //free the buffer;
@@ -570,7 +550,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (nonnull NSDictionary *)convertToDictionary {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     return [NSKeyedUnarchiver unarchiveObjectWithData:self];
 }
@@ -584,7 +564,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (nonnull instancetype)dateRoundedToPrecision:(NSUInteger)decimalPoints {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     NSTimeInterval timeInterval = self.timeIntervalSince1970;
     NSTimeInterval expandedTimeInterval = timeInterval*powl(10, decimalPoints);
@@ -605,17 +585,17 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)dictionaryWithNullableObject:(nullable id)object forKey:(nonnull id <NSCopying>)key {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    if (object) {
-        dictionary[key] = object;
+    if (!object) {
+        return [[self class] dictionary];
     }
-    return dictionary;
+    
+    return [[self class] dictionaryWithObject:object forKey:key];
 }
 
 - (nonnull NSSet *)pathURLs {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     NSMutableSet *pathURLs = [NSMutableSet set];
     NSMutableArray *keyArrays = [NSMutableArray arrayWithCapacity:self.allKeys.count];
@@ -655,7 +635,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (nonnull NSData *)convertToData {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     return [NSKeyedArchiver archivedDataWithRootObject:self];
 }
@@ -669,11 +649,13 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (void)setNullableObject:(nullable id)anObject forKey:(nonnull id <NSCopying>)aKey {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:nil message:nil];
     
-    if (anObject) {
-        [self setObject:anObject forKey:aKey];
+    if (!anObject) {
+        return;
     }
+    
+    [self setObject:anObject forKey:aKey];
 }
 
 @end
@@ -686,12 +668,12 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 - (void)setup
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
 }
 
 - (void)teardown
 {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetup tags:nil message:nil];
 }
 
 @end
@@ -703,17 +685,17 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)randomStringWithCharacters:(nonnull NSString *)charactersString length:(NSUInteger)length {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
         [randomString appendFormat: @"%C", [charactersString characterAtIndex:(arc4random() % charactersString.length)]];
     }
-    return randomString;
+    return [[self class] stringWithString:randomString];
 }
 
 - (BOOL)isEmail {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$" options:NSRegularExpressionCaseInsensitive error:nil];
     NSRange range = [regex firstMatchInString:self options:0 range:NSMakeRange(0, self.length)].range;
@@ -721,13 +703,13 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (BOOL)isNumeric {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
     
     return [[NSCharacterSet decimalDigitCharacterSet] isSupersetOfSet:[NSCharacterSet characterSetWithCharactersInString:self]];
 }
 
 - (nonnull instancetype)encryptedStringUsingKey:(nonnull NSString *)key {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
     
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     data = [data AES256EncryptWithKey:key];
@@ -735,15 +717,15 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (nonnull instancetype)decryptedStringUsingKey:(nonnull NSString *)key {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_DATA] message:nil];
     
     NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:0];
     data = [data AES256DecryptWithKey:key];
-    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    return [[[self class] alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 - (NSUInteger)length {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:nil message:nil];
     
     NSMutableCharacterSet *characterSet = [NSMutableCharacterSet nonBaseCharacterSet];
     [characterSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
@@ -751,7 +733,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (BOOL)onlyContainsCharactersInSet:(nonnull NSCharacterSet *)characterSet {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:nil message:nil];
     
     return [AKGenerics object:self isEqualToObject:[[self componentsSeparatedByCharactersInSet:characterSet.invertedSet] componentsJoinedByString:@""]];
 }
@@ -765,9 +747,9 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actions:(nullable NSArray <NSString *> *)actions preferredAction:(nullable NSString *)preferredAction dismissalText:(nullable NSString *)dismissalText completion:(nullable void(^)(UIAlertAction * _Nonnull action))completionBlock {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:@[AKD_UI] message:nil];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
+    id alertController = [[self class] alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
     if (dismissalText || !actions) {
         [alertController addAction:[UIAlertAction actionWithTitle:(dismissalText ?: @"Dismiss") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [alertController clearTextFields];
@@ -784,7 +766,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
             [alertController addAction:alertAction];
             if ([title isEqualToString:preferredAction]) {
                 if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0f) {
-                    alertController.preferredAction = alertAction;
+                    ((UIAlertController *)alertController).preferredAction = alertAction;
                 }
             }
         }
@@ -792,63 +774,15 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     return alertController;
 }
 
-//+ (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(nullable NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^ _Nullable)(UIAlertAction * _Nonnull))completion {
-//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
-//    
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
-//    [alertController addAction:[UIAlertAction actionWithTitle:actionText style:actionStyle handler:completion]];
-//    return alertController;
-//}
-
 - (void)clearTextFields {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     for (UITextField *textField in self.textFields) {
         textField.text = nil;
     }
 }
 
-//- (nonnull void(^)(void))clearTextFieldsBlock {
-//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
-//    
-//    return ^{
-//        for (UITextField *textField in self.textFields) {
-//            textField.text = nil;
-//        }
-//    };
-//}
-
 @end
-
-//#pragma mark - // IMPLEMENTATION (UIButton) //
-//
-//@implementation UIButton (AKGenerics)
-//
-//- (void)setImage:(nullable UIImage *)image {
-//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
-//    
-//    [self setImage:image forState:UIControlStateNormal];
-//    [self setImage:image forState:UIControlStateSelected];
-//    [self setImage:image forState:UIControlStateHighlighted];
-//}
-//
-//- (void)setBackgroundImage:(nullable UIImage *)image {
-//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
-//    
-//    [self setBackgroundImage:image forState:UIControlStateNormal];
-//    [self setBackgroundImage:image forState:UIControlStateSelected];
-//    [self setBackgroundImage:image forState:UIControlStateHighlighted];
-//}
-//
-//- (void)setText:(nullable NSString *)text {
-//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
-//    
-//    [self setTitle:text forState:UIControlStateNormal];
-//    [self setTitle:text forState:UIControlStateSelected];
-//    [self setTitle:text forState:UIControlStateHighlighted];
-//}
-//
-//@end
 
 #pragma mark - // IMPLEMENTATION (UICollectionViewCell) //
 
@@ -857,7 +791,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier collectionView:(nonnull UICollectionView *)collectionView atIndexPath:(nonnull NSIndexPath *)indexPath {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];;
 }
@@ -871,9 +805,9 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)iOSBlue {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
-    return [UIColor colorWithHue:0.58692810457516342 saturation:1.0 brightness:1.0f alpha:1.0f];
+    return [[self class] colorWithHue:0.58692810457516342 saturation:1.0 brightness:1.0f alpha:1.0f];
 }
 
 @end
@@ -885,7 +819,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (nonnull instancetype)imageWithAlpha:(CGFloat)alpha {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -901,7 +835,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (nonnull instancetype)thumbnailWithSize:(CGSize)size opaque:(BOOL)opaque {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
     
     CGRect cropRect;
     CGFloat newDimension;
@@ -923,11 +857,11 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (nonnull instancetype)croppedImageWithFrame:(CGRect)frame {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:nil message:nil];
     
     CGImageRef imageRef = CGImageRotated([self CGImage], M_PI_2);
     imageRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height-frame.origin.y));
-    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    id croppedImage = [[self class] imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return croppedImage;
 }
@@ -941,10 +875,10 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (void)scrollToView:(nonnull UIView *)view animated:(BOOL)animated {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     if (![view isEventualSubviewOfView:self]) {
-        [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:[NSString stringWithFormat:@"%@ is not subview of %@", stringFromVariable(view), stringFromVariable(scrollView)]];
+//        [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeNotice methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:[NSString stringWithFormat:@"%@ is not subview of %@", stringFromVariable(view), stringFromVariable(scrollView)]];
         return;
     }
     
@@ -961,7 +895,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (void)moveRowsAtIndexPaths:(NSArray <NSIndexPath *> *)indexPaths toIndexPaths:(NSArray <NSIndexPath *> *)newIndexPaths {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     NSAssert(indexPaths.count == newIndexPaths.count, @"%@ and %@ must have the same number of items", stringFromVariable(indexPaths), stringFromVariable(newIndexPaths));
     
@@ -984,23 +918,21 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 + (nonnull instancetype)cellWithReuseIdentifier:(nullable NSString *)reuseIdentifier style:(UITableViewCellStyle)style tableView:(nonnull UITableView *)tableView atIndexPath:(nonnull NSIndexPath *)indexPath fromStoryboard:(BOOL)fromStoryboard {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
-    UITableViewCell *cell;
     if (([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) || (!fromStoryboard)) {
-        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
         if (!cell) {
             cell = [[self alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
         }
+        return cell;
     }
-    else {
-        cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    }
-    return cell;
+    
+    return [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
 }
 
 + (CGFloat)defaultHeight {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     return 44.0f;
 }
@@ -1014,7 +946,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (void)selectTextInRange:(NSRange)range {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     UITextPosition *start = [self positionFromPosition:[self beginningOfDocument] offset:range.location];
     UITextPosition *end = [self positionFromPosition:start offset:range.length];
@@ -1030,7 +962,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (nullable UIView *)firstResponder {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
     
     NSMutableArray *subviews = [NSMutableArray arrayWithArray:self.subviews];
     UIView *subview;
@@ -1048,7 +980,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (BOOL)isEventualSubviewOfView:(nonnull UIView *)view {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     NSMutableOrderedSet *subviews = [[NSMutableOrderedSet alloc] initWithArray:view.subviews];
     UIView *subview;
@@ -1068,7 +1000,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (void)setFrameWithOriginX:(nullable NSNumber *)originX originY:(nullable NSNumber *)originY width:(nullable NSNumber *)width height:(nullable NSNumber *)height {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
     
     CGRect frame = self.frame;
     if (originX) {
@@ -1087,7 +1019,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (void)setFrameWithCenterX:(nullable NSNumber *)centerX centerY:(nullable NSNumber *)centerY width:(nullable NSNumber *)width height:(nullable NSNumber *)height {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
     
     CGRect frame = self.frame;
     if (centerX) {
@@ -1106,14 +1038,14 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (void)addBorderWithColor:(nonnull CGColorRef)color width:(CGFloat)width {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     [self.layer setBorderColor:color];
     [self.layer setBorderWidth:width];
 }
 
 - (void)addShadowWithColor:(nonnull CGColorRef)color opacity:(float)opacity radius:(CGFloat)radius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     [self.layer setShadowPath:[UIBezierPath bezierPathWithRect:self.bounds].CGPath];
     [self.layer setShadowRadius:radius];
@@ -1125,20 +1057,29 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 }
 
 - (void)rotateFromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
-    [AKGenerics rotateViews:@[self] fromAngle:fromAngle byAngle:angle withDuration:duration completion:completion];
+    self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, fromAngle);
+    [CATransaction begin];
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.byValue = [NSNumber numberWithFloat:angle];
+    rotationAnimation.duration = duration;
+    rotationAnimation.removedOnCompletion = NO;
+    rotationAnimation.fillMode = kCAFillModeForwards;
+    [CATransaction setCompletionBlock:completion];
+    [self.layer addAnimation:rotationAnimation forKey:stringFromVariable(rotationAnimation)];
+    [CATransaction commit];
 }
 
 - (void)flipHorizontally:(CGFloat)radians withAnimations:(nullable void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(nullable void (^)(BOOL))completion {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     CGPoint rotationAxis = CGPointMake(0.0f, 1.0f);
     [self flipWithRotationAxis:rotationAxis radians:radians withAnimations:animations duration:duration options:options completion:completion];
 }
 
 - (void)flipVertically:(CGFloat)radians withAnimations:(nullable void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(nullable void (^)(BOOL))completion {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     CGPoint rotationAxis = CGPointMake(1.0f, 0.0f);
     [self flipWithRotationAxis:rotationAxis radians:radians withAnimations:animations duration:duration options:options completion:completion];
@@ -1147,7 +1088,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Private Methods
 
 - (void)flipWithRotationAxis:(CGPoint)rotationAxis radians:(CGFloat)radians withAnimations:(nullable void (^)(void))animations duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(nullable void (^)(BOOL))completion {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = -1.0f/500.0f;
@@ -1169,7 +1110,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 #pragma mark Public Methods
 
 - (void)performBlockOnChildViewControllers:(void (^)(UIViewController *childViewController))block {
-    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     
     NSMutableArray <UIViewController *> *childViewControllers = [NSMutableArray arrayWithArray:self.childViewControllers];
     UIViewController *childViewController;

@@ -39,7 +39,6 @@ extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
 + (nullable NSNumber *)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation;
 + (CGFloat)angleForImageOrientation:(UIImageOrientation)orientation;
 + (AVCaptureVideoOrientation)convertInterfaceOrientationToVideoOrientation:(UIInterfaceOrientation)interfaceOrientation;
-+ (void)rotateViews:(nonnull NSArray <UIView *> *)views fromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion;
 + (CGFloat)statusBarHeight;
 + (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPathsToInsert:(NSArray * _Nonnull * _Nonnull)indexPaths withSection:(NSUInteger)section;
 + (void)compareArray:(nonnull NSArray *)array toArray:(nonnull NSArray *)newArray andGenerateIndexPaths:(NSArray * _Nonnull * _Nonnull)indexPaths toMoveToIndexPaths:(NSArray * _Nonnull * _Nonnull)newIndexPaths withSection:(NSUInteger)section;
@@ -106,18 +105,8 @@ extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
 
 @interface UIAlertController (AKGenerics)
 + (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actions:(nullable NSArray <NSString *> *)actions preferredAction:(nullable NSString *)preferredAction dismissalText:(nullable NSString *)dismissalText completion:(nullable void (^)(UIAlertAction * _Nonnull action))completionBlock;
-//+ (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle actionText:(nullable NSString *)actionText actionStyle:(UIAlertActionStyle)actionStyle completion:(void (^ _Nullable)(UIAlertAction * _Nonnull))completion;
 - (void)clearTextFields;
-//- (nonnull void(^)(void))clearTextFieldsBlock;
 @end
-
-//#pragma mark - // DEFINITIONS (UIButton) //
-//
-//@interface UIButton (AKGenerics)
-//- (void)setImage:(nullable UIImage *)image;
-//- (void)setBackgroundImage:(nullable UIImage *)image;
-//- (void)setText:(nullable NSString *)text;
-//@end
 
 #pragma mark - // DEFINITIONS (UICollectionViewCell) //
 
