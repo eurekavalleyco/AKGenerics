@@ -577,6 +577,27 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 @end
 
+#pragma mark - // IMPLEMENTATION (NSDate) //
+
+@implementation NSDate (AKGenerics)
+
+#pragma mark Public Methods
+
+- (nonnull instancetype)dateRoundedToPrecision:(NSUInteger)decimalPoints {
+    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeCreator tags:nil message:nil];
+    
+    NSTimeInterval timeInterval = self.timeIntervalSince1970;
+    NSTimeInterval expandedTimeInterval = timeInterval*powl(10, decimalPoints);
+    NSTimeInterval roundedTimeInterval = round(expandedTimeInterval);
+    NSMutableString *stringTimeInterval = [NSMutableString stringWithFormat:@"%.f", roundedTimeInterval];
+    [stringTimeInterval insertString:@"." atIndex:stringTimeInterval.length-decimalPoints];
+    NSDecimalNumber *decimalTimeInterval = [NSDecimalNumber decimalNumberWithString:stringTimeInterval];
+    double doubleTimeInterval = decimalTimeInterval.doubleValue;
+    return [[self class] dateWithTimeIntervalSince1970:doubleTimeInterval];
+}
+
+@end
+
 #pragma mark - // IMPLEMENTATION (NSDictionary) //
 
 @implementation NSDictionary (AKGenerics)

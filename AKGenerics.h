@@ -63,6 +63,12 @@ extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
 - (nonnull NSDictionary *)convertToDictionary;
 @end
 
+#pragma mark - // DEFINITIONS (NSDate) //
+
+@interface NSDate (AKGenerics)
+- (nonnull instancetype)dateRoundedToPrecision:(NSUInteger)decimalPoints;
+@end
+
 #pragma mark - // DEFINITIONS (NSDictionary) //
 
 @interface NSDictionary (AKGenerics)
