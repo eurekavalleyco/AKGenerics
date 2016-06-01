@@ -770,9 +770,7 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
     if (dismissalText || !actions) {
         [alertController addAction:[UIAlertAction actionWithTitle:(dismissalText ?: @"Dismiss") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            for (UITextField *textField in alertController.textFields) {
-                textField.text = nil;
-            }
+            [alertController clearTextFields];
         }]];
     }
     if (actions) {
