@@ -17,6 +17,11 @@
 
 #pragma mark - // DEFINITIONS (Private) //
 
+NSString * _Nonnull const NOTIFICATION_OBJECT_KEY = @"kNotificationUserInfo_Object";
+NSString * _Nonnull const NOTIFICATION_OLD_KEY = @"kNotificationUserInfo_Old";
+NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY = @"kNotificationUserInfo_Secondary";
+//NSString * _Nonnull const NOTIFICATION_NEW_KEY = @"kNotificationUserInfo_New";
+
 @interface AKGenerics ()
 CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians);
 @end

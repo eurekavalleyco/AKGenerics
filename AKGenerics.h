@@ -18,11 +18,10 @@
 
 #pragma mark - // DEFINITIONS (AKGenerics) //
 
-#define NOTIFICATION_OBJECT_KEY @"kNotificationUserInfoObjectKey"
-#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
-#define NOTIFICATION_OLD_KEY @"kNotificationUserInfoOldKey"
-#define NOTIFICATION_NEW_KEY @"kNotificationUserInfoNewKey"
-//#define NOTIFICATION_SECONDARY_KEY @"kNotificationUserInfoSecondaryKey"
+extern NSString * _Nonnull const NOTIFICATION_OBJECT_KEY;
+extern NSString * _Nonnull const NOTIFICATION_OLD_KEY;
+extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
+//extern NSString * _Nonnull const NOTIFICATION_NEW_KEY;
 
 #define stringFromVariable(variable) (@""#variable)
 
