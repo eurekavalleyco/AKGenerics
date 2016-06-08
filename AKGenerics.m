@@ -1070,6 +1070,12 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     self.frame = frame;
 }
 
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
+    
+    self.layer.cornerRadius = cornerRadius;
+}
+
 - (void)addBorderWithColor:(nonnull CGColorRef)color width:(CGFloat)width {
 //    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeUnspecified tags:@[AKD_UI] message:nil];
     

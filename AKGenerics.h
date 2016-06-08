@@ -161,6 +161,7 @@ extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
 - (BOOL)isEventualSubviewOfView:(nonnull UIView *)view;
 - (void)setFrameWithOriginX:(nullable NSNumber *)originX originY:(nullable NSNumber *)originY width:(nullable NSNumber *)width height:(nullable NSNumber *)height;
 - (void)setFrameWithCenterX:(nullable NSNumber *)centerX centerY:(nullable NSNumber *)centerY width:(nullable NSNumber *)width height:(nullable NSNumber *)height;
+- (void)setCornerRadius:(CGFloat)cornerRadius;
 - (void)addBorderWithColor:(nonnull CGColorRef)color width:(CGFloat)width;
 - (void)addShadowWithColor:(nonnull CGColorRef)color opacity:(float)opacity radius:(CGFloat)radius cornerRadius:(CGFloat)cornerRadius offset:(CGSize)shadowOffset;
 - (void)rotateFromAngle:(CGFloat)fromAngle byAngle:(CGFloat)angle withDuration:(CFTimeInterval)duration completion:(nullable void (^)(void))completion;
