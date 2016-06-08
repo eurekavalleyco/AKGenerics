@@ -150,6 +150,7 @@ extern NSString * _Nonnull const NOTIFICATION_SECONDARY_KEY;
 #pragma mark - // DEFINITIONS (UITextField) //
 
 @interface UITextField (AKGenerics)
+@property (nonatomic) BOOL selectable;
 - (void)selectTextInRange:(NSRange)range;
 @end
 

@@ -13,6 +13,7 @@
 #import "AKGenerics.h"
 //#import "AKDebugger.h"
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
 
 #pragma mark - // DEFINITIONS (Private) //
 
@@ -943,6 +944,26 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
 
 @implementation UITextField (AKGenerics)
 
+#pragma mark Setters and Getters
+
+- (void)setSelectable:(BOOL)selectable {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeSetter tags:@[AKD_UI] message:nil];
+    
+    objc_setAssociatedObject(self, @selector(selectable), @(selectable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)selectable {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeGetter tags:@[AKD_UI] message:nil];
+    
+    NSNumber *selectableValue = objc_getAssociatedObject(self, @selector(selectable));
+    if (selectableValue) {
+        return selectableValue.boolValue;
+    }
+    
+    self.selectable = YES;
+    return self.selectable;
+}
+
 #pragma mark Public Methods
 
 - (void)selectTextInRange:(NSRange)range {
@@ -951,6 +972,18 @@ CGImageRef CGImageRotated(CGImageRef originalCGImage, double radians) {
     UITextPosition *start = [self positionFromPosition:[self beginningOfDocument] offset:range.location];
     UITextPosition *end = [self positionFromPosition:start offset:range.length];
     [self setSelectedTextRange:[self textRangeFromPosition:start toPosition:end]];
+}
+
+#pragma mark Overwritten Methods
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+//    [AKDebugger logMethod:METHOD_NAME logType:AKLogTypeMethodName methodType:AKMethodTypeValidator tags:@[AKD_UI] message:nil];
+    
+    if (!self.selectable) {
+        return NO;
+    }
+    
+    return [super canPerformAction:action withSender:sender];
 }
 
 @end
